@@ -4,8 +4,15 @@ import { Center, Heading, VStack, Text, Spacer } from "@chakra-ui/react";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
+import initialData from "../../data/initialData.json";
+
 export default function Header() {
-  const { data, error } = useSWR("/api/names", fetcher);
+  const { data, error } = useSWR("/api/names", fetcher, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    revalidateOnMount: false,
+    initialData,
+  });
 
   return (
     <Center w="100%" py={10} bg="gray.200">

@@ -6,8 +6,14 @@ import SingleName from "./SingleName";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
+import initialData from "../../data/initialData.json";
+
 export default function ListNames() {
-  const { data, error } = useSWR("/api/names", fetcher);
+  const { data, error } = useSWR("/api/names", fetcher, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    initialData,
+  });
 
   const bg = { light: "gray.50", dark: "gray.900" };
 
@@ -42,7 +48,11 @@ export default function ListNames() {
         {data &&
           data.map((n) => (
             <React.Fragment key={n._id}>
-              <SingleName name={n.name} id={n._id} description={n.description} />
+              <SingleName
+                name={n.name}
+                id={n._id}
+                description={n.description}
+              />
             </React.Fragment>
           ))}
       </List>
