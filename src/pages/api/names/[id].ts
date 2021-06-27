@@ -1,4 +1,17 @@
-export default function handler(req, res){
+import db from "../../../../utils/db";
 
-    return res.status(200).json({message: __filename})
+export default async function getAll(req, res) {
+  const { id } = req?.query;
+
+  if (!id) {
+    return res.status(400).send({ message: "Id is missing" });
+  }
+
+  try {
+    const entry = await db.collection("somalinames").doc(id).get();
+
+    return res.status(200).json({ _id: entry.id, ...entry.data() });
+  } catch (e) {
+    res.status(400).end();
+  }
 }

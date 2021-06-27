@@ -1,4 +1,15 @@
-export default function handler(req, res){
+import db from "../../../../utils/db";
 
-    return res.status(200).json({message: __dirname})
+export default async function getAll(req, res) {
+  try {
+    const entries = await db.collection("somalinames").get();
+    const entriesData = entries.docs.map((entry) => ({
+      _id: entry.id,
+      ...entry.data(),
+    }));
+
+    res.status(200).json(entriesData);
+  } catch (e) {
+    res.status(400).end();
+  }
 }
