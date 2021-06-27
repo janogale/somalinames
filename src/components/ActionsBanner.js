@@ -6,6 +6,7 @@ import { AddIcon, SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 const ActionsBanner = () => {
   return (
     <HStack
+      as="section"
       alignItems="center"
       justifyContent="flex-end"
       px={3}

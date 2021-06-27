@@ -15,14 +15,14 @@ import { Footer } from "../components/Footer";
 import ActionsBanner from "./../components/ActionsBanner";
 
 const Index = () => (
-  <Container height="100vh">
+  <Container height="100vh" className="container">
     <AppHeader />
     <Main>
       <ActionsBanner />
     </Main>
 
     <Footer>
-      <Text>Next ❤️ Chakra</Text>
+      <Text fontWeight="thin"> Somali ❤️ Dhaqan</Text>
     </Footer>
   </Container>
 );
