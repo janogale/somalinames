@@ -47,10 +47,10 @@ export default function ListNames() {
       >
         {data &&
           data.map((n) => (
-            <React.Fragment key={n._id}>
+            <React.Fragment key={n.id}>
               <SingleName
                 name={n.name}
-                id={n._id}
+                id={n?._id || n.id}
                 description={n.description}
               />
             </React.Fragment>

@@ -15,7 +15,7 @@ export default function Header() {
   });
 
   return (
-    <Center w="100%" py={10} bg="gray.200">
+    <Center w="100%" py={8} bg="gray.200">
       <VStack>
         <Heading bgGradient="linear(to-l, #7928CA, #FF0080)" bgClip="text">
           Somali Names
