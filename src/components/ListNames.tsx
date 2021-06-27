@@ -3,6 +3,7 @@ import useSWR from "swr";
 
 import { List, Flex, useColorModeValue } from "@chakra-ui/react";
 import SingleName from "./SingleName";
+import SkeletonContainer from "./Skeleton";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -20,12 +21,12 @@ export default function ListNames() {
   const color = { light: "black", dark: "white" };
 
   if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  if (true) return <SkeletonContainer />;
 
   return (
-    <Flex shadow={7} bg={bg} rounded={32} p={2} width="100%" flex={1} h="100%">
+    <Flex shadow={7} bg={bg} p={2} width="100%" flex={1} h="100%">
       <List
-        mb={8}
+        mb={12}
         px={2}
         border="none"
         width="100%"

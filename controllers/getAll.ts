@@ -10,6 +10,6 @@ export default async function getAll(req, res) {
 
     res.status(200).json(entriesData);
   } catch (e) {
-    res.status(400).json(e);
+    return res.status(400).json(e);
   }
 }

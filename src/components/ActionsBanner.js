@@ -14,11 +14,11 @@ const ActionsBanner = () => {
       pb={3}
       width="100%"
     >
-      <Button onClick={() => console.log("plus")}>
-        <AddIcon size="sm" mr={6} />
-      </Button>
-      <Button onClick={() => console.log("search")}>
+      <Button onClick={() => console.log("search")} bg="transparent">
         <SearchIcon size="sm" />
+      </Button>
+      <Button onClick={() => console.log("plus")} bg="transparent">
+        <AddIcon size="sm" mr={6} />
       </Button>
     </HStack>
   );
