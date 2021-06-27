@@ -21,7 +21,7 @@ export default function ListNames() {
   const color = { light: "black", dark: "white" };
 
   if (error) return <div>failed to load</div>;
-  if (true) return <SkeletonContainer />;
+  if (!data) return <SkeletonContainer />;
 
   return (
     <Flex shadow={7} bg={bg} p={2} width="100%" flex={1} h="100%">
