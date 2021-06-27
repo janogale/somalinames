@@ -9,8 +9,9 @@ const ActionsBanner = () => {
       as="section"
       alignItems="center"
       justifyContent="flex-end"
-      px={3}
-      py={6}
+      pr={8}
+      pt={6}
+      pb={3}
       width="100%"
     >
       <Button onClick={() => console.log("plus")}>

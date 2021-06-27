@@ -1,17 +1,17 @@
-import db from "../../../../utils/db";
+// import controllers
 
-export default async function getAll(req, res) {
-  const { id } = req?.query;
+import { getOne } from "../../../../controllers";
 
-  if (!id) {
-    return res.status(400).send({ message: "Id is missing" });
-  }
-
-  try {
-    const entry = await db.collection("somalinames").doc(id).get();
-
-    return res.status(200).json({ _id: entry.id, ...entry.data() });
-  } catch (e) {
-    res.status(400).end();
+export default function handler(req, res) {
+  switch (req.method) {
+    case "GET":
+      getOne(req, res);
+      break;
+    case "POST":
+      //...
+      break;
+    default:
+      res.status(405).end(); //Method Not Allowed
+      break;
   }
 }

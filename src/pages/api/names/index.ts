@@ -1,15 +1,17 @@
-import db from "../../../../utils/db";
+// import controllers
 
-export default async function getAll(req, res) {
-  try {
-    const entries = await db.collection("somalinames").get();
-    const entriesData = entries.docs.map((entry) => ({
-      _id: entry.id,
-      ...entry.data(),
-    }));
+import { getAll } from "../../../../controllers";
 
-    res.status(200).json(entriesData);
-  } catch (e) {
-    res.status(400).end();
+export default function handler(req, res) {
+  switch (req.method) {
+    case "GET":
+      getAll(req, res);
+      break;
+    case "POST":
+      //...
+      break;
+    default:
+      res.status(405).end(); //Method Not Allowed
+      break;
   }
 }
