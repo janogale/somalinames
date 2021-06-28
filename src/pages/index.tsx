@@ -7,13 +7,13 @@ import { Main } from "../components/Main";
 import { Footer } from "../components/Footer";
 import ActionsBanner from "./../components/ActionsBanner";
 import ListNames from "./../components/ListNames";
+import ListActionContainer from "./../components/ListActionContainer";
 
 const Index = () => (
   <Container height="100vh" className="container">
     <AppHeader />
     <Main>
-      <ActionsBanner />
-      <ListNames />
+      <ListActionContainer />
     </Main>
 
     <Footer>

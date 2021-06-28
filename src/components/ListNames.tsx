@@ -3,28 +3,10 @@ import useSWR from "swr";
 
 import { List, Flex, useColorModeValue } from "@chakra-ui/react";
 import SingleName from "./SingleName";
-import SkeletonContainer from "./Skeleton";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-import initialData from "../../data/initialData.json";
-
-export default function ListNames() {
-  const { data, error } = useSWR("/api/names", fetcher, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    initialData,
-  });
-
-  const bg = { light: "gray.50", dark: "gray.900" };
-
-  const color = { light: "black", dark: "white" };
-
-  if (error) return <div>failed to load</div>;
-  if (!data) return <SkeletonContainer />;
-
+export default function ListNames({ names }) {
   return (
-    <Flex shadow={7} bg={bg} p={2} width="100%" flex={1} h="100%">
+    <Flex shadow={7} p={2} width="100%" flex={1} h="100%">
       <List
         mb={12}
         px={2}
@@ -46,8 +28,8 @@ export default function ListNames() {
           },
         }}
       >
-        {data &&
-          data.map((n) => (
+        {names &&
+          names.map((n) => (
             <React.Fragment key={n.id}>
               <SingleName
                 name={n.name}

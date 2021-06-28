@@ -1,9 +1,24 @@
 import React from "react";
 
-import { HStack, Button } from "@chakra-ui/react";
+import {
+  HStack,
+  Box,
+  Button,
+  Input,
+  Text,
+  InputGroup,
+  InputLeftElement,
+} from "@chakra-ui/react";
 import { AddIcon, SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 
-const ActionsBanner = () => {
+function ActionsBanner({ onSearch, found }) {
+  const [toggle, setToggle] = React.useState(true);
+  const [value, setValue] = React.useState("");
+
+  function handleSearch(e) {
+    onSearch(e.target.value);
+  }
+
   return (
     <HStack
       as="section"
@@ -14,7 +29,33 @@ const ActionsBanner = () => {
       pb={3}
       width="100%"
     >
-      <Button onClick={() => console.log("search")} bg="transparent">
+      <Box flex={1} px={[3, 6, 12]}>
+        {toggle && (
+          <InputGroup>
+            <InputLeftElement pointerEvents="none">
+              <SearchIcon color="gray.300" />
+            </InputLeftElement>
+            <Input
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onKeyUp={handleSearch}
+              placeholder="Search Name"
+            />
+          </InputGroup>
+        )}
+        {!!found && (
+          <Text mt={1} fontSize="sm" fontWeight="thin">
+            {found} names found
+          </Text>
+        )}
+      </Box>
+      <Button
+        onClick={() => {
+          setToggle(!toggle);
+          setValue("");
+        }}
+        bg="transparent"
+      >
         <SearchIcon size="sm" />
       </Button>
       <Button onClick={() => console.log("plus")} bg="transparent">
@@ -22,6 +63,6 @@ const ActionsBanner = () => {
       </Button>
     </HStack>
   );
-};
+}
 
 export default ActionsBanner;
